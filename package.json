@@ -3,6 +3,10 @@
 	"displayName": "Mudlet Scripts SDK",
 	"description": "Extension to easily include Mudlet's API documentation (autocomplete, paramter hints etc.).",
 	"version": "1.0.0",
+    "repository": {
+        "url": "https://github.com/Delwing/mudlet-scripts-sdk"
+    },
+    "icon": "",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
