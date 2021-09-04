@@ -13,7 +13,7 @@ export class MudletDocsController {
 
   async downloadDocs(force = false): Promise<void> {
     let lastDownload = this.context.globalState.get("mudlet-scripts-sdk.lastDownload");
-    if (!force && lastDownload !== undefined && parseInt(lastDownload as string) + 86400000 < Date.now()) {
+    if (!force && !vscode.workspace.getConfiguration("mudlet-scripts-sdk.autoUpdateApis") && lastDownload !== undefined && parseInt(lastDownload as string) + 86400000 < Date.now()) {
       return;
     }
 

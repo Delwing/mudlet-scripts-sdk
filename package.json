@@ -1,8 +1,8 @@
 {
 	"name": "mudlet-scripts-sdk",
-	"displayName": "Mudlet Script SDK",
+	"displayName": "Mudlet Scripts SDK",
 	"description": "Extension to easily include Mudlet's API documentation (autocomplete, paramter hints etc.).",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -27,7 +27,20 @@
 				"command": "mudlet-scripts-sdk.disableMudletDocs",
 				"title": "Mudlet Docs: Disable"
 			}
-		]
+		],
+        "configuration":[
+            {
+                "title": "Mudlet Scripts SDK",
+                "properties": {
+                    "mudlet-scripts-sdk.autoUpdateApis": {
+                        "title": "Auto update APIs",
+                        "type" :"boolean",
+                        "default": true,
+                        "description": "Enables periodical (every 24h, on VS Code startup) updates of Mudlet Docs Extract"
+                    }
+                }
+            }
+        ]
 	},
 	"dependencies": {
 		"@microsoft/vscode-file-downloader-api": "^1.0.1",
