@@ -1,5 +1,11 @@
 # Change Log
 
-## [Unreleased]
+## [1.0.3]
+## [1.0.2]
+## [1.0.1]
+
+- Technical releases (minifying source, fix to run minified source, add icon)
+
+## [1.0.0]
 
 - Initial release
