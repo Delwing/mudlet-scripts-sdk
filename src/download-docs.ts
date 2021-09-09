@@ -2,7 +2,7 @@ import { get } from "https";
 import { ExtensionContext, ProgressLocation, Uri, window } from "vscode";
 import { getApi } from "@microsoft/vscode-file-downloader-api";
 import { Extract } from "unzipper";
-import { createReadStream } from "fs";
+import { createReadStream, existsSync, renameSync, rmdirSync } from "fs";
 
 export class DropboxDownloader {
   context: ExtensionContext;
@@ -21,7 +21,15 @@ export class DropboxDownloader {
             location = `https://dropbox.com${location}`;
           }
           this.downloadFile(name, Uri.parse(location as string), destination, false).then((path) => {
-            createReadStream(path).pipe(Extract({ path: `${this.context.globalStorageUri.fsPath}/docs` }));
+            const docsPath = `${this.context.globalStorageUri.fsPath}/docs`;
+            const tempPath = `${this.context.globalStorageUri.fsPath}/docs-old`;
+            if (existsSync(docsPath)) {
+              renameSync(docsPath, tempPath);
+            }
+            createReadStream(path).pipe(Extract({ path: docsPath }));
+            if (existsSync(tempPath)) {
+              rmdirSync(tempPath, { recursive: true });
+            }
             resolve(destination);
           });
         }
@@ -40,7 +48,6 @@ export class DropboxDownloader {
         return new Promise(async (resolve, reject) => {
           let fileDownloader = await getApi();
           let lastProgress = 0;
-
           try {
             let file = await fileDownloader.downloadFile(
               uri,
