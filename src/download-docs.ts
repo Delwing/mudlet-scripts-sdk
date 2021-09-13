@@ -12,7 +12,6 @@ export class DropboxDownloader {
   }
 
   async downloadDropboxFile(name: string, downloadUrl: string, destination: string): Promise<string> {
-    let extPath = this.context.globalStorageUri.fsPath;
     return new Promise((resolve, reject) => {
       get(downloadUrl, (response) => {
         if (response.statusCode === 302 || response.statusCode === 301) {
