@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { MudletDocsController } from "./controller";
+import { MudletXmlEditorProvider } from "./mudlet-editor-provider";
 
 export function activate(context: vscode.ExtensionContext) {
   let docsController = new MudletDocsController(context);
@@ -21,7 +22,9 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(updateDocs);
   context.subscriptions.push(disableDocs);
 
+  context.subscriptions.push(MudletXmlEditorProvider.register(context));
+
   docsController.downloadDocs();
 }
 
-export function deactivate() {}
+export function deactivate() { }
