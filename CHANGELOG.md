@@ -1,26 +1,34 @@
 # Change Log
 
-## [1.0.6]
+## [1.7.0]
+
+- Technical release
+- Removed not neede dependencies
+- Fixed typo in description
+- Fix dependabot alerts
+- Added CodeQL analysis
+
+## [1.6.0]
 
 - [bugfix] Autoupdate of docs will not run more often than once a day
 
-## [1.0.5]
+## [1.5.0]
 
 - Technical release
 
-## [1.0.4]
+## [1.4.0]
 
 - Technical release
 
-## [1.0.3]
+## [1.3.0]
 
 - Technical release
 
-## [1.0.2]
+## [1.2.0]
 
 - Technical release
 
-## [1.0.1]
+## [1.1.0]
 
 - Technical releases (minifying source, fix to run minified source, add icon)
 - Readme & Changelog filling
