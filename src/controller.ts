@@ -27,18 +27,19 @@ export class MudletDocsController {
     return `${this.context.globalStorageUri.fsPath}/docs` as any;
   }
 
-  getCurrentWorkspaceLibrary() {
-    // When https://github.com/sumneko/vscode-lua/issues/40 is fixed this fragment needs rewrite to take into account that setting is an array
+  getCurrentWorkspaceLibrary() : Array<string> {
     let current = vscode.workspace.getConfiguration().get(LIBRARY_WORKSPACE_KEY);
-    if (Array.isArray(current)) {
-      current = {};
+    if (!Array.isArray(current)) {
+      let oldConfig = current as Record<string, boolean>;
+      current = Object.keys(oldConfig).filter(key =>  oldConfig[key])
     }
-    return current;
+    return current as Array<string>;
   }
 
   setWorkspaceLibraryPath(value: boolean) {
     let current = this.getCurrentWorkspaceLibrary();
     let key = this.getDocsPath();
-    vscode.workspace.getConfiguration().update(LIBRARY_WORKSPACE_KEY, Object.assign(current, { [key]: value }));
+    current.push(key);
+    vscode.workspace.getConfiguration().update(LIBRARY_WORKSPACE_KEY, Array.from(new Set(current)));
   }
 }

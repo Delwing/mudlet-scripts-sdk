@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.8.0]
+
+- Setting of Lua workspace property is adjusted to corrected format (array)
+
 ## [1.7.0]
 
 - Technical release

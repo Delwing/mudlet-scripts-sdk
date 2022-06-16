@@ -2,7 +2,7 @@
 	"name": "mudlet-scripts-sdk",
 	"displayName": "Mudlet Scripts SDK",
 	"description": "Extension to easily include Mudlet's API documentation (autocomplete, paramter hints etc.).",
-	"version": "1.7.0",
+	"version": "1.8.0",
 	"publisher": "Delwing",
 	"repository": {
 		"url": "https://github.com/Delwing/mudlet-scripts-sdk"
@@ -17,7 +17,7 @@
 	"activationEvents": [
 		"onStartupFinished"
 	],
-	"main": "./out/main.js",
+	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -54,7 +54,7 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run esbuild-base --minify",
-		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
 		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
 		"compile": "tsc -p ./",
