@@ -15,8 +15,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onStartupFinished",
-		"onCustomEditor:mudlet.xmlEditor"
+		"onStartupFinished"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -36,18 +35,10 @@
 			{
 				"command": "mudlet-script-sdk.openScript",
 				"title": "Open script"
-			}
-		],
-		"customEditors": [
+			},
 			{
-				"viewType": "mudlet.xmlEditor",
-				"displayName": "Mudlet",
-				"selector": [
-					{
-						"filenamePattern": "*.xml"
-					}
-				],
-				"priority": "default"
+				"command": "mudlet-script-sdk.search",
+				"title": "Search scripts"
 			}
 		],
 		"views": {
@@ -65,6 +56,13 @@
 					"command": "mudlet-script-sdk.openScript",
 					"when": "view == mudletXml && viewItem != 'type'",
 					"group": "inline"
+				}
+			],
+			"view/title": [
+				{
+					"command": "mudlet-script-sdk.search",
+					"when": "view == mudletXml && viewItem != 'type'",
+					"group": "navigation"
 				}
 			]
 		},
