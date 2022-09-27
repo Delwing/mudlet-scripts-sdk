@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.9.0]
+
+- Fix issues with downloads
+
 ## [1.8.0]
 
 - Setting of Lua workspace property is adjusted to corrected format (array)

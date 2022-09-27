@@ -16,7 +16,7 @@ export class DropboxDownloader {
       get(downloadUrl, (response) => {
         if (response.statusCode === 302 || response.statusCode === 301) {
           let location = response.headers.location;
-          if (response.statusCode === 301) {
+          if (!location?.startsWith("http")) {
             location = `https://dropbox.com${location}`;
           }
           this.downloadFile(name, Uri.parse(location as string), destination, false).then((path) => {
